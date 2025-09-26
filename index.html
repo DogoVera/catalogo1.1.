@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección de Catálogo - Tienda de Ropa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #000;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        .catalog-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            min-height: 80vh;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .catalog-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .catalog-option {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .catalog-option:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.3);
+        }
+
+        .catalog-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .catalog-option:hover .catalog-image {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .catalog-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .catalog-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #000;
+            color: #666;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .catalog-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .catalog-option {
+                height: 300px;
+                max-width: 100%;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .catalog-title {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo de la tienda" class="logo">
+    </header>
+    
+    <section class="catalog-selection">
+        <h1 class="title">Selecciona tu tipo de catálogo</h1>
+        
+        <div class="catalog-options">
+            <div class="catalog-option" onclick="location.href='stock-inmediato.html'">
+                <img src="https://i.ibb.co/B2nLg0Pq/algodo.jpg" alt="Stock Inmediato" class="catalog-image">
+                <div class="overlay">
+                    <h2 class="catalog-title">STOCK INMEDIATO</h2>
+                    <p class="catalog-description">Productos disponibles para entrega inmediata</p>
+                    <a href="stock-inmediato.html" class="btn">Ver catálogo</a>
+                </div>
+            </div>
+            
+            <div class="catalog-option" onclick="location.href='fabricacion.html'">
+                <img src="https://i.ibb.co/fcX1SP5/image-1-1340x1785.png" alt="Fabricación por Encargue" class="catalog-image">
+                <div class="overlay">
+                    <h2 class="catalog-title">FABRICACIÓN POR ENCARGUE</h2>
+                    <p class="catalog-description">Productos personalizados y hechos a medida</p>
+                    <a href="fabricacion.html" class="btn">Ver catálogo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>Catálogo Visual &copy; 2025 - Selecciona el tipo de productos que deseas ver</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Ropa - Galería de Productos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos adicionales para el logo que se reduce */
+        header {
+            transition: all 0.3s ease;
+            padding: 20px;
+            height: 120px; /* Altura fija para el header */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo {
+            transition: all 0.3s ease;
+            max-width: 180px;
+            height: auto;
+        }
+        
+        header.small-header {
+            padding: 10px;
+            height: 70px; /* Altura reducida */
+        }
+        
+        header.small-header .logo {
+            max-width: 70px; /* 70% más pequeño que el original */
+        }
+        
+        /* Ajuste para que el contenido no quede oculto detrás del header fijo */
+        body {
+            padding-top: 120px; /* Espacio para el header normal */
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Ajustar el padding superior cuando el header es pequeño */
+        body.small-header-body {
+            padding-top: 70px;
+        }
+        
+        /* Separación adicional entre el header y la galería */
+        .container {
+            padding-top: 30px; /* Espacio extra para asegurar que no se tape nada */
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+            
+            header {
+                height: 100px;
+                padding: 15px;
+            }
+            
+            body.small-header-body {
+                padding-top: 60px;
+            }
+            
+            header.small-header {
+                height: 60px;
+                padding: 8px;
+            }
+            
+            .logo {
+                max-width: 150px;
+            }
+            
+            header.small-header .logo {
+                max-width: 60px;
+            }
+            
+            .container {
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header id="mainHeader">
+    <img src="logo.png" alt="Logo de la tienda" class="logo">
+</header>
+    <div class="container">
+        <div class="gallery" id="gallery">
+            <!-- Las imágenes se cargarán dinámicamente con JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Lightbox para visualización de imágenes -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <img id="lightboxImage" src="" alt="">
+            <div class="product-info" id="productInfo"></div>
+            <div class="thumbnails" id="thumbnails"></div>
+        </div>
+        <div class="nav-btn prev-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+        <div class="nav-btn next-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    
+    <footer>
+        <p>Catálogo Visual &copy; 2025 - Haz clic en cualquier imagen para ver la galería del producto</p>
+    </footer>
+
+    <!-- Archivos JS -->
+    <script src="images.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Script para el efecto de reducción del logo -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('mainHeader');
+            const body = document.body;
+            let scrollTimeout;
+            
+            // Función para manejar el scroll
+            function handleScroll() {
+                // Limpiar timeout existente
+                clearTimeout(scrollTimeout);
+                
+                // Si el scroll es mayor a 50px, reducir el header
+                if (window.scrollY > 50) {
+                    header.classList.add('small-header');
+                    body.classList.add('small-header-body');
+                } else {
+                    header.classList.remove('small-header');
+                    body.classList.remove('small-header-body');
+                }
+                
+                // Establecer un timeout para optimizar el rendimiento
+                scrollTimeout = setTimeout(function() {
+                    // Código que se ejecuta después de que el scroll se detiene
+                }, 100);
+            }
+            
+            // Escuchar el evento de scroll
+            window.addEventListener('scroll', handleScroll);
+            
+            // Ejecutar una vez al cargar para verificar la posición inicial
+            handleScroll();
+        });
+    </script>
+</body>
+</html>
